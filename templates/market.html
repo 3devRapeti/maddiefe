@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+        <link href="{% static 'agatony' %}" rel="stylesheet">
+        <title>Fishing Equilibrium</title>
+        <style>
+            body {
+                background-image: url('https://acegif.com/wp-content/gifs/water-35.gif');
+                background-repeat: no-repeat;
+                background-size: 100%;
+                overflow-x: hidden;
+            }
+            .glass {
+                margin-top: 200px;
+                margin-left: -20px;
+                margin-right: -20px;
+                background-color: rgba(255, 0, 0, 0.511);
+                padding: 100px;
+            }
+            .board {
+                position: absolute;
+                left: 400px;
+                top: 150px;
+                background-color: rgba(255, 255, 255, 0.822);
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 0px;
+                padding-bottom: 100px;
+            }
+            table{
+                border-collapse:collapse;
+                border:2px solid #000000;
+                padding: 10px;
+                background-color: rgb(255, 248, 241);
+                font-family: 'Nunito', sans-serif;
+            }    
+            table td{
+                border:2px solid #000000;
+                padding: 10px;
+                font-weight: bolder;
+            }
+            table th{
+                border:2px solid #000000;
+                padding: 10px;
+            }
+            .next {
+                position: absolute;
+                top: 400px;
+                left: 350px;
+                background-color: white;
+                color: rgba(153, 4, 4, 0.856);
+                border-color: rgba(153, 4, 4, 0.856);
+                font-family: 'Montserrat', sans-serif;
+                font-weight: bolder;
+                font-size: 17px;
+                border-radius: 30px;
+                border-width: 1px;
+                padding: 10px;
+                border-style: double;
+                box-shadow: 0px 0px 10px rgba(153, 4, 4, 0.321);
+                transition: 0.5s;
+                cursor: pointer;
+            }
+            .next:hover {
+                background-color: rgba(153, 4, 4, 0.856);
+                color: white;
+            }
+            #timer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin-top: 20px;
+            }
+            .number-list {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .number-list .item {
+                width: 20px;
+                height: 20px;
+                background: #670c0000;
+                margin-right: 0px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 17px;
+                color: rgb(0, 0, 0);
+                font-weight: 100;
+                font-family: sans-serif;
+            }
+            .unit-list {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .unit-list .item {
+                width: 30px;
+                margin-right: 0px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                color: #006741;
+                font-weight: 100;
+                font-family: sans-serif;
+            }
+            .timer-end {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                color: #006741;
+                font-weight: 100;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="glass"></div>
+        <div class="board">
+            <div id="timer">
+                <div class="number-list">
+                    <div class="item" data-minutes="">00</div>
+                    <div class="item">:</div>
+                    <div class="item" data-seconds="">00</div>
+                </div>
+            </div>
+            <h1 style="font-family: 'Montserrat'; font-size: 45px; text-align: center;"><u>Profit stats</u></h1>
+            <table>
+                <tr>
+                    <th><b>Day</b></th>
+                    <th><b>Red boat team</b></th>
+                    <th><b>New boat team</b></th>
+                    <th><b>Young fishermen</b></th>
+                    <th><b>Rented boat team</b></th>
+                </tr>
+                {% for p in profit %}
+                <tr>
+                    <td>{{p.day}}</td>
+                    <td>{{p.team1}}</td>
+                    <td>{{p.team2}}</td>
+                    <td>{{p.team3}}</td>
+                    <td>{{p.team4}}</td>
+                </tr>
+                {% endfor %}
+                <!--<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>-->
+            </table>
+            <hr>
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <button class="next">Next day</button>
+        </div>
+        <script>
+            /*!
+            * aksCountDown v1.0.0
+            * (c) 2021 Ahmet Aksungur
+            * MIT License
+            * https://github.com/Ahmetaksungur
+            */
+            (function ($) {
+                "use strict";
+                $.fn.aksCountDown = function (options) {
+                    const aks = $(this);
+                    var settings = $.extend(
+                        {
+                        endTime: "",
+                        refresh: 1000,
+                        onEnd: function () {}
+                        },
+                        options
+                    );
+                    return this.each(function (i) {
+                        function endTimeCheck(d1, d2) {
+                            return (
+                                d1.getFullYear() === d2.getFullYear() &&
+                                d1.getMonth() === d2.getMonth() &&
+                                d1.getDate() === d2.getDate()
+                            );
+                        }
+                        function countTimer() {
+                            var endTime = new Date(2021,5,24,13,59,0,0);
+                            endTime = Date.parse(endTime) / 1000;
+                            var now = new Date();
+                            now = Date.parse(now) / 1000;
+                            var timeLeft = endTime - now;
+                            if(timeLeft>0) {
+                                var days = Math.floor(timeLeft / 86400);
+                                var hours = Math.floor((timeLeft - days * 86400) / 3600);
+                                var minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60);
+                                var seconds = Math.floor(
+                                    timeLeft - days * 86400 - hours * 3600 - minutes * 60
+                                );
+                            }
+                            else {
+                                var days = 0;
+                                var hours = 0;
+                                var minutes = 0;
+                                var seconds = 0;
+                            }
+                            if (hours < "10") { hours = "0" + hours; }
+                            if (minutes < "10") { minutes = "0" + minutes; }
+                            if (seconds < "10") { seconds = "0" + seconds; }
+                            $(aks).find("[data-days]").html(days);
+                            $(aks).find("[data-hours]").html(hours);
+                            $(aks).find("[data-minutes]").html(minutes);
+                            $(aks).find("[data-seconds]").html(seconds);
+                        }
+                        var now = new Date();
+                        var endTime = new Date(settings.endTime);
+                        if (endTimeCheck(now, endTime) === true) { settings.onEnd.call(aks); } 
+                        else { setInterval(function () { countTimer(); }, settings.refresh); }
+                    });
+                };
+            })(jQuery);
+            $("#timer").aksCountDown({
+                endTime: "15 June 2022 9:56:00 GMT+01:00",
+                onEnd: function () {
+                $(this).html('<div class="timer-end">Finished Time</div>');
+                }
+            });
+        </script>
+    </body>
+</html>

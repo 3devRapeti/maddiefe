@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        <link href="{% static 'agatony' %}" rel="stylesheet">
+        <title>Fishing Equilibrium</title>
+        <style>
+            body {
+                background-image: url('{% static "bg5.gif" %}');
+                background-size: 100vw 100vh;
+                background-repeat: no-repeat;
+                overflow: hidden !important;
+            }
+            .fishing {
+                position: absolute;
+                top: -430px;
+                left: -10px;
+                z-index: 1 !important;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 350px;
+                background: linear-gradient(rgb(255, 255, 255), white, rgb(123, 194, 212));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
+            .equilibrium {
+                position: absolute;
+                top: -500px;
+                left: 160px;
+                z-index: 10 !important;
+                font-family: 'Agatony';
+                font-size: 450px;
+                color: rgb(252, 0, 0);
+                letter-spacing: 20px;
+                font-weight: lighter;
+            }
+            @font-face{
+                font-family: 'Agatony';
+                src : url('{% static "agatony/Agatony.otf" %}')
+            }
+            .fish3 {
+                position: absolute;
+                left: -60px;
+                width: 60px;
+                animation-name: forward;
+                animation-duration: 12s;
+                animation-iteration-count: 50;
+            }
+            .fish2 {
+                position: absolute;
+                left: 1600px;
+                width: 60px;
+                animation-name: backward;
+                animation-duration: 12s;
+                animation-iteration-count: 50;
+            }
+            .fish1 {
+                position: absolute;
+                left: 1600px;
+                width: 120px;
+                animation-name: backward;
+                animation-duration: 20s;
+                animation-iteration-count: 50;
+            }
+            .fish4 {
+                position: absolute;
+                left: 1100px;
+                width: 100px;
+            }
+            .fish5 {
+                position: absolute;
+                left: 1600px;
+                width: 150px;
+                animation-name: backward;
+                animation-duration: 20s;
+                animation-iteration-count: 50;
+            }
+            .loading {
+                display: block;
+                position:absolute;
+                left: 650px;
+                top: 600px;
+                font-size: 30px;
+                color: white;
+                z-index: -1;
+            }
+            @keyframes forward {
+                from {left: -60px;}
+                to {left: 1540px;}
+            }
+            @keyframes backward {
+                from {left: 1600px;}
+                to {left: -160px;}
+            }
+            @keyframes forward2 {
+                from {left: -300px;}
+                to {left: 650px;}
+            }
+            .name {
+                padding-top: 50px;
+                padding-left: 60px;
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                top: 550px;
+                left: -300px;
+                animation-duration: 6s;
+                background-image: url('{% static "fishh6.gif" %}') !important;
+                background-repeat: no-repeat;
+                background-size: 300px 200px;
+            }
+            .formf {
+                width: 300px;
+                position: absolute;
+                top: 520px;
+                left: 650px;
+                animation-name: forward2;
+                animation-duration: 6s;
+                animation-iteration-count: 1;
+            }
+            #name {
+                display: none;
+            }
+            #code {
+                display: none;
+            }
+            .go {
+                margin-top: 10px;
+                float: right;
+                margin-right: 115px;
+                color: white;
+                background-color: rgb(202, 42, 14);
+                font-family: 'Montserrat';
+                font-size: 15px;
+                border-radius: 4px;
+                border-color: transparent;
+                border-width: 0px;
+                box-shadow: 0px 0px 6px black;
+            }
+            .go:hover {
+                background-color: rgb(126, 189, 8);
+            }
+            .incor {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="fishing">FISHING</p>
+        <p class="equilibrium">Equilibrium</p>
+        <img src="{% static 'fish3.gif' %}" class="fish3" style="top: 580px;">
+        <img src="{% static 'fish3.gif' %}" class="fish3" style="animation-delay: 2s;top: 690px;">
+        <img src="{% static 'fish3.gif' %}" class="fish3" style="animation-delay: -2s;top: 600px;">
+        <img src="{% static 'fish2.gif' %}" class="fish2" style="top: 530px;">
+        <img src="{% static 'fish2.gif' %}" class="fish2" style="top: 630px; animation-delay: -1s;">
+        <img src="{% static 'fish1.gif' %}" class="fish1" style="top: 560px; animation-delay: -3s;">
+        <img src="{% static 'fish1.gif' %}" class="fish1" style="top: 620px; animation-delay: 6s;">
+        <img src="{% static 'fish4.gif' %}" class="fish4" style="top: 560px; animation-delay: -190s;">
+        <img src="{% static 'fish5.gif' %}" class="fish5" style="top: 660px; animation-delay: -1s;">
+        <p id="inc" class="incor" style="position: absolute; top: 514px; left: 660px; width: 1000vw; color: rgb(255, 0, 0); text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.247); font-family: 'Montserrat', sans-serif; font-size: 15px;">Incorrect Room Code. Try again!</p>
+        <p id="loading" class="loading" style="font-family: 'Montserrat';">Loading...</p>
+        <div id="form" class="form">
+            <form action="" method="POST" role="form">
+                {% csrf_token %}
+                <div id="name" class="name">
+                    <img src="{% static 'fishh6.gif' %}" class="formf">
+                    <label for="cd" style="font-family: 'Montserrat'; font-size: 15px; color: rgb(255, 255, 255); text-shadow: 0px 0px 10px black">Room Code</label><br>
+                    <input name="cd" type="number" id="cd" style="height: 20px; width: 180px; font-size: 20px; text-decoration: bold; border-radius: 6px;" maxlength="8" minlength="8" required /><br>
+                    <input id="go" class="go" onclick="goqwerty()" type="button" value="GO">
+                    <script>
+                        function goqwerty() {
+                            var count = 0;
+                            var code = $("#cd").val();
+                            {% for rc in roomcode %}
+                                console.log(code);
+                                if(code=="{{ rc.roomcode }}") count++;
+                                console.log("{{rc.roomcode}}");
+                            {% endfor %}
+                            if(count) {
+                                $("#name").animate({left: '1600px'},4000);
+                                document.getElementById("code").style.display=" block";
+                                $("#code").animate({left: '650px'},4000);
+                            }
+                            else {
+                                var element = document.getElementById("inc");
+                                element.classList.toggle("incor");
+                                setTimeout(function() { 
+                                    element.classList.toggle("incor");
+                                    $("#cd").value='';
+                                }, 5000);
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="code" class="name">
+                    <img src="{% static 'fishh6.gif' %}" class="formf">
+                    <label for="nick" style="font-family: 'Montserrat'; font-size: 15px; color: rgb(255, 255, 255); text-shadow: 0px 0px 10px black">Nickname</label><br>
+                    <input name="nick" type="text" id="nick" style="height: 20px; width: 180px; font-size: 20px; text-decoration: bold; border-radius: 6px;" required /><br>
+                    <input id="submit" class="go" onclick="goqwerty()" type="submit" value="GO">
+                </div>
+            </form>
+        </div>
+        <script>
+            var vid = document.getElementById("myVideo");
+            vid.playbackRate = 0.001;
+        </script>
+        <script>
+            window.setTimeout("closeDiv();", 2000);
+            function closeDiv(){
+                document.getElementById("loading").style.display=" none";
+                document.getElementById("name").style.display=" block";
+                $("#name").animate({left: '650px'},4000);
+            }
+        </script>
+    </body>
+</html>

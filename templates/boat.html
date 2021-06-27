@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+        <link href="{% static 'agatony' %}" rel="stylesheet">
+        <title>Fishing Equilibrium</title>
+        <style>
+            body {
+                background-image: url('https://acegif.com/wp-content/gifs/water-35.gif');
+                background-repeat: no-repeat;
+                background-size: 100%;
+                overflow-x: hidden;
+            }
+            .glass {
+                margin-top: 200px;
+                margin-left: -20px;
+                margin-right: -20px;
+                background-color: rgba(255, 0, 0, 0.511);
+                padding: 100px;
+            }
+            .board {
+                position: absolute;
+                left: 500px;
+                top: 150px;
+                background-color: rgba(255, 255, 255, 0.822);
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 0px;
+                padding-bottom: 50px;
+                max-height: 500px;
+            }
+            #num {
+                background-color: rgba(241, 65, 65, 0.884);
+                cursor: pointer; 
+                margin-left: -20px;
+                color: white; 
+                font-family:'Montserrat'; 
+                font-size:20px; 
+                border-radius: 4px; 
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.479);
+                transition: 0.5s;
+            }
+            #num:hover {
+                background-color: rgb(209, 56, 56);
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.379);
+            }
+            .submit {
+                background-color: yellowgreen;
+                font-family: 'Montserrat';
+                font-size:20px; 
+                margin-left: 90px;
+                margin-top: 30px;
+                border-radius: 4px;
+                border: 1px solid black;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+            .submit:hover {
+                background-color: rgb(198, 228, 139);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="glass"></div>
+        <div class="board">
+            <h1 style="font-family: 'Montserrat'; font-size: 45px;"><u>Your boat mates</u></h1>
+            {% for u in user %}
+                <h4 style="font-family: 'Nunito', sans-serif; font-size: 20px; text-align: center;">{{ u.name }}</h4>
+            {% endfor %}
+            <hr>
+            <form method="POST" role="form" action="">
+                {% csrf_token %}
+                <label style="font-family: 'Nunito', sans-serif; margin-left: -30px;"><b>How many fishes do you want to catch?</b></label>
+                <input type="radio" id="one" name="fish" value="1" style="width: 0px;">
+                <label id="num" for="one">&nbsp one &nbsp</label>
+                <input type="radio" id="two" name="fish" value="2" style="width: 0px;">
+                <label id="num" for="two">&nbsp two &nbsp</label><br>
+                <input type="submit" name="submit" placeholder="Return to the shore" value="Return to the shore" class="submit">
+            </form>
+        </div>
+        
+    </body>
+</html>
